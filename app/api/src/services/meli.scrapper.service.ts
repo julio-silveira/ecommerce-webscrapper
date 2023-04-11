@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { meliCategories, meliMainSelector } from '../utils/constants'
+import { defaultQuery, meliCategories, meliMainSelector } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
 
 export class MeliScrapperService {
@@ -13,7 +13,8 @@ export class MeliScrapperService {
 
   private buildUrl(category: ProductCategory, query: string) {
     const categoryQuery = meliCategories[category]
-    const nameQuery = query ? `${query}_NoIndex_True#D[A:${query},on]` : 'celular'
+    const nameQuery = query ? `${query}_NoIndex_True#D[A:${query},on]` : defaultQuery(category)
+
     return `https://lista.mercadolivre.com.br/${categoryQuery}/${nameQuery}`
   }
 
