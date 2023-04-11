@@ -13,11 +13,13 @@ export class MeliScrapperService {
 
   private buildUrl(category: ProductCategory, query: string) {
     const categoryQuery = meliCategories[category]
-    return `https://lista.mercadolivre.com.br/${categoryQuery}/${query}_NoIndex_True#D[A:${query},on]`
+    const nameQuery = query ? `${query}_NoIndex_True#D[A:${query},on]` : 'celular'
+    return `https://lista.mercadolivre.com.br/${categoryQuery}/${nameQuery}`
   }
 
   public async getProductList(category: ProductCategory, query: string){
     const url = this.buildUrl(category, query)
+    
     const { data } = await axios.get(url)
     const $ =  cheerio.load(data)
 
