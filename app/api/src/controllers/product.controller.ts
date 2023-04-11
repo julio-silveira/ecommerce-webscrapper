@@ -8,11 +8,10 @@ export class ProductsController {
   }
   
   findAllProduct = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-    console.log('teste');
+    try {    
+    const products = await this.service.findProducts()
+    console.log(products);
     
-    const products = this.service.findProducts()
-
     return res.status(200).json(products)
     } catch (err) {
       next(err)
