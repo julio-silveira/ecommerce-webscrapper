@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import { ProductService } from '../services'
 import { ProductCategory } from '../types/ProductCategory'
+import { ProductQuery } from '../types/ProductQuery'
 
 export class ProductsController {
   private service
@@ -10,7 +11,7 @@ export class ProductsController {
   
   findAllProduct = async (req: Request, res: Response, next: NextFunction) => {
     try {    
-    const {category, query, source} = req.query as { category: ProductCategory, query: string, source: string}
+    const {category, query, source} = req.query as unknown as ProductQuery // resolver isso antes do deploy
     
     const products = await this.service.findProducts(category, query, source)
     

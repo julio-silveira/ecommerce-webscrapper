@@ -1,7 +1,18 @@
 import { ProductCategory } from '../types/ProductCategory'
 
 export const meliMainSelector = `
-body > main#root-app:nth-child(2) > div.ui-search.shops__ui-main > div.ui-search-main.ui-search-main--exhibitor.ui-search-main--only-products.ui-search-main--with-topkeywords.shops__search-main:nth-child(4) > section.ui-search-results.ui-search-results--without-disclaimer.shops__search-results:nth-child(2) > ol.ui-search-layout.ui-search-layout--stack.shops__layout:nth-child(8) > li.ui-search-layout__item.shops__layout-item`
+  body > 
+    div#__next:nth-child(1) > 
+      div.Content_Container__heIrp.container-lg:nth-child(2) > 
+        div.row:nth-child(2) > 
+          div.col-lg-9:nth-child(2) > 
+            div.Hits_Wrapper__3q_7P:nth-child(4)`
+
+export const buscapeMainSelector = `
+  body > div#__next:nth-child(1) > 
+    div.Content_Container__heIrp.container-lg:nth-child(2) > 
+      div.row:nth-child(2) > div.col-lg-9:nth-child(2) > 
+        div.Hits_Wrapper__3q_7P:nth-child(4)`
 
 export const meliCategories = {
     mobilePhone: 'celulares-telefones/celulares-smartphones',

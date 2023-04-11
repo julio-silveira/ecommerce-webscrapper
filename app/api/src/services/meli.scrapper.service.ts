@@ -36,6 +36,7 @@ export class MeliScrapperService {
       
       itens.push({i, image,title,category,url,price, originWebsite:this.originWebsite})
     })
+    
     return itens
   }
 
