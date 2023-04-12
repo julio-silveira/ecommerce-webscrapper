@@ -21,7 +21,6 @@ export class MeliScrapperService {
 
   public async getProductList(category: ProductCategory, query: string){
     const url = this.buildUrl(category, query)
-    console.log(url);
     
     const { data } = await axios.get(url)
     const $ =  cheerio.load(data)
@@ -35,7 +34,7 @@ export class MeliScrapperService {
       const url = el.find(this.urlSelector).attr('href')
       const price = el.find(this.priceSelector).find('.price-tag-amount').eq(0).text()
       
-      const numberfiedPrice = Number(price.split('R$').at(-1))
+      const numberfiedPrice = Number(price.split('R$').at(-1)?.replace('.','').replace(',','.'))
 
       itens.push({image,title,category,url,price: numberfiedPrice, originWebsite:this.originWebsite})
     })

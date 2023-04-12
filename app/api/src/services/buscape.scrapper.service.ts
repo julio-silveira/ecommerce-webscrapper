@@ -35,6 +35,13 @@ export class BuscapeScrapperService {
       const title = el.find(this.titleSelector).find('h2').text() 
       const url = el.find(this.urlSelector).attr('href')
       const price = el.find(this.priceSelector).text() 
+
+      const numberfiedPrice = Number(price.split('R$')?.at(-1)
+        ?.trim()
+        .replace('.','')
+        .replace(',','.'))
+
+
       if( !image || image.startsWith('data:')) {
       image = el.find(this.imageSelector).find('noscript')
         .html()
@@ -42,7 +49,7 @@ export class BuscapeScrapperService {
         .find((e)=> e.startsWith("src") )?.split("\"").at(1)
     
     }
-      itens.push({image,title,category,url: `https://www.buscape.com.br${url}`,price, originWebsite:this.originWebsite}) 
+      itens.push({image,title,category,url: `https://www.buscape.com.br${url}`,price: numberfiedPrice, originWebsite:this.originWebsite}) 
     }})
     
     return itens
