@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import express from 'express';
+import * as express from 'express'
 import productRoutes from './routes/products.router'
 
 
