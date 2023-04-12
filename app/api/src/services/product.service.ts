@@ -14,7 +14,7 @@ export class ProductService{
 
 
   public async findProducts(category: ProductCategory, query: string, source: string) {
-    const products = await this.buscapeScrapper.getProductList(category, query)
+    const products = await this.meliScrapper.getProductList(category, query)
     return products
   }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { buscapeMainSelector, defaultQuery, meliMainSelector } from '../utils/constants'
+import { buscapeMainSelector, defaultQuery } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
 
 export class BuscapeScrapperService {
