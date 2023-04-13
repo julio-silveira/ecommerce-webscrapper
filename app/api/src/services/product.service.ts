@@ -28,7 +28,6 @@ export class ProductService{
 
   private async filterSources(productsList: ProductList, source: string | undefined){
     const parsedSource = sources[source]
-    console.log(parsedSource)
     if(!source || !parsedSource) return productsList
     return productsList.products.filter(({originWebsite})=> originWebsite === parsedSource)
   }
