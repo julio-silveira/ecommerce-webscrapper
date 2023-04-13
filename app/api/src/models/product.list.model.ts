@@ -7,14 +7,14 @@ const ProductSchema = new Schema({
   url: String,
   price: Number,
   originWebsite: String
-})
+}, {versionKey: false})
 
 
 const ProductListSchema = new Schema({
   category: String,
   query: String,
   products: [ProductSchema]
-})
+}, {versionKey: false})
 
 const ProductsListModel = mongoose.model('ProductList', ProductListSchema);
 

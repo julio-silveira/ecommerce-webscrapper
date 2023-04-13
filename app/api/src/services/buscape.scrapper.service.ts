@@ -2,6 +2,7 @@ import axios from 'axios'
 import * as cheerio from 'cheerio'
 import { buscapeMainSelector, defaultQuery } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
+import { Product } from '../types/Product'
 
 export class BuscapeScrapperService {
   private mainSelector = '.Hits_Wrapper__3q_7P'
@@ -16,13 +17,13 @@ export class BuscapeScrapperService {
     return `https://www.buscape.com.br/search?q=${nameQuery}`
   }
 
-  public async getProductList(category: ProductCategory, query: string){
+  public async getProductList(category: ProductCategory, query: string): Promise<Product[]>{
     const url = this.buildUrl(category, query)
     
     const { data } = await axios.get(url, {responseType: 'arraybuffer'})
     const $ =  cheerio.load(data)
 
-    const itens: object[] = []
+    const itens: Product[] = []
   
     $(this.mainSelector).children().each((i, element) => {
 
