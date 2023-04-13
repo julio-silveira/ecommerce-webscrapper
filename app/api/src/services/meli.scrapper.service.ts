@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { defaultQuery, meliCategories, meliMainSelector } from '../utils/constants'
+import { defaultQuery, meliCategories, meliMainSelector, sources } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
 import { Product } from '../types/Product'
 
@@ -10,7 +10,7 @@ export class MeliScrapperService {
   private titleSelector = '.ui-search-item__title'
   private urlSelector = '.ui-search-link'
   private priceSelector = '.ui-search-price__second-line'
-  private originWebsite = 'Mercado Livre'
+  private originWebsite = sources.meli
 
   private buildUrl(category: ProductCategory, query: string) {
     const categoryQuery = meliCategories[category]

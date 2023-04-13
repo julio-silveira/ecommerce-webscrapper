@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import { ProductList } from '../types/ProductList';
 
 const ProductSchema = new Schema({
   image: String,
@@ -16,6 +17,6 @@ const ProductListSchema = new Schema({
   products: [ProductSchema]
 }, {versionKey: false})
 
-const ProductsListModel = mongoose.model('ProductList', ProductListSchema);
+const ProductsListModel = mongoose.model<ProductList>('ProductList', ProductListSchema);
 
 export default ProductsListModel

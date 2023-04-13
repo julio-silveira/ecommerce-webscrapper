@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { buscapeMainSelector, defaultQuery } from '../utils/constants'
+import { buscapeMainSelector, defaultQuery, sources } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
 import { Product } from '../types/Product'
 
@@ -10,7 +10,7 @@ export class BuscapeScrapperService {
   private titleSelector = '.SearchCard_ProductCard_NameWrapper__Gv0x_'
   private urlSelector = '.SearchCard_ProductCard_Inner__7JhKb'
   private priceSelector = '.Text_Text__h_AF6.Text_MobileHeadingS__Zxam2'
-  private originWebsite = 'Buscape'
+  private originWebsite = sources.busca
 
   private buildUrl(category: ProductCategory, query: string) {
     const nameQuery = query ? query : defaultQuery(category)

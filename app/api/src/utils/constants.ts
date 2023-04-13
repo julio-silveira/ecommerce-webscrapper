@@ -20,6 +20,11 @@ export const meliCategories = {
     refrigerator: 'eletrodomesticos/refrigeracao/geladeiras'
   }
 
+export const sources = {
+  meli: "Mercado Livre",
+  busca: 'Buscapé'
+}
+
 export const defaultQuery = (category: ProductCategory) => {
   switch(category) {
     case 'mobilePhone':
