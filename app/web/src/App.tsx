@@ -1,20 +1,60 @@
 import React from 'react'
-import { Button } from '@mui/material'
+import {
+  Button,
+  Container,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField
+} from '@mui/material'
+import { Header } from './components'
+
+const searchEngines = [
+  { value: 'all', name: 'Todas' },
+  { value: 'meli', name: 'Mercado Livre' },
+  { value: 'busca', name: 'Buscapé' }
+]
+
+const categories = [
+  { value: 'refrigerator', name: 'Geladeira' },
+  { value: 'TV', name: 'TV' },
+  { value: 'mobilePhone', name: 'Celular' }
+]
 
 function App() {
   return (
-    <div className="App">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <Button variant="contained">count is</Button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Container>
+      <Header />
+
+      <Stack component="form" pt={2} spacing={1} direction="row">
+        <FormControl sx={{ minWidth: '100px' }}>
+          <InputLabel>Web</InputLabel>
+          <Select size="small" label="Web" autoWidth>
+            {searchEngines.map(({ value, name }) => (
+              <MenuItem key={value} value={value}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ minWidth: '150px' }}>
+          <InputLabel>Categorias</InputLabel>
+          <Select size="small" label="Categorias" autoWidth>
+            {categories.map(({ value, name }) => (
+              <MenuItem key={value} value={value}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <TextField size="small" />
+        <Button size="small" variant="contained">
+          Search
+        </Button>
+      </Stack>
+    </Container>
   )
 }
 
