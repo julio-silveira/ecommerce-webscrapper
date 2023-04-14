@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import { defaultQuery, meliCategories, meliMainSelector, sources } from '../utils/constants'
+import { defaultQuery, meliCategories, sources } from '../utils/constants'
 import { ProductCategory } from '../types/ProductCategory'
 import { Product } from '../types/Product'
 

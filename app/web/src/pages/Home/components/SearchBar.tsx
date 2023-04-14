@@ -42,7 +42,7 @@ export default function SearchBar() {
       component="form"
       pt={4}
       spacing={1}
-      direction="row"
+      direction={{ xs: 'column', md: 'row' }}
       justifyContent="center"
       onSubmit={handleSubmit}
     >

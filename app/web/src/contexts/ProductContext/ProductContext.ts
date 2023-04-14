@@ -2,6 +2,7 @@ import { createContext } from 'react'
 import { Product } from '../../types'
 
 export type ProductContextData = {
+  emptyMessage: string
   products: Product[]
   fetchProducts: (url: string) => Promise<void>
   loading: boolean

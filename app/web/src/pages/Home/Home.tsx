@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import SearchBar from './components/SearchBar'
-import { Stack, Typography } from '@mui/material'
-import { ProductContext } from '../../contexts'
+import { Stack } from '@mui/material'
+import ProductList from './components/ProductList'
 
 export default function Home() {
-  const { products } = useContext(ProductContext)
   return (
-    <Stack component="main">
+    <Stack component="main" maxWidth="xl">
       <SearchBar />
-      <Typography> {JSON.stringify(products)}</Typography>
+      <ProductList />
     </Stack>
   )
 }

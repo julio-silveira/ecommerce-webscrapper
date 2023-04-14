@@ -26,9 +26,10 @@ export class ProductService{
   }
 
   private async filterSources(productsList: ProductList, source: string | undefined){
+    const {category, query, products} = productsList
     const parsedSource = sources[source]
     if(!source || !parsedSource) return productsList
-    return productsList.products.filter(({originWebsite})=> originWebsite === parsedSource)
+    return {category, query, products: products.filter(({originWebsite})=> originWebsite === parsedSource)}
   }
 
   public async findProducts(category: ProductCategory, query: string, source: string) {
@@ -36,7 +37,6 @@ export class ProductService{
 
     if(!productList) {
       const scrappedProducts = await this.getScrappedProducts(category, query)
-
       await ProductsListModel.create({category, query,products: scrappedProducts})
 
       productList = await ProductsListModel.findOne({category, query})
