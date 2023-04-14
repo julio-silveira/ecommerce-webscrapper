@@ -29,7 +29,7 @@ function App() {
       <Header />
 
       <Stack component="form" pt={2} spacing={1} direction="row">
-        <FormControl sx={{ minWidth: '100px' }}>
+        <FormControl sx={{ minWidth: '150px' }} size="small">
           <InputLabel>Web</InputLabel>
           <Select size="small" label="Web" autoWidth>
             {searchEngines.map(({ value, name }) => (
@@ -39,7 +39,7 @@ function App() {
             ))}
           </Select>
         </FormControl>
-        <FormControl sx={{ minWidth: '150px' }}>
+        <FormControl sx={{ minWidth: '150px' }} size="small">
           <InputLabel>Categorias</InputLabel>
           <Select size="small" label="Categorias" autoWidth>
             {categories.map(({ value, name }) => (
