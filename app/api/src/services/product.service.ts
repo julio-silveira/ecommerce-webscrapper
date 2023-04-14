@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { MeliScrapperService } from './meli.scrapper.service'
 import { ProductCategory } from '../types/ProductCategory'
 import { BuscapeScrapperService } from './buscape.scrapper.service'
@@ -34,9 +33,9 @@ export class ProductService{
 
   public async findProducts(category: ProductCategory, query: string, source: string) {
     let productList = await ProductsListModel.findOne({category, query})
-    
+
     if(!productList) {
-      const scrappedProducts = await this.getScrappedProducts(category, query)     
+      const scrappedProducts = await this.getScrappedProducts(category, query)
 
       await ProductsListModel.create({category, query,products: scrappedProducts})
 

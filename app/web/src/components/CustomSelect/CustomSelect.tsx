@@ -1,30 +1,41 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent
+} from '@mui/material'
 import React from 'react'
 import { SelectOption } from '../../types'
 
 type Props = {
   options: SelectOption[]
-  handleChange: VoidFunction
-  inputValue: string | number | []
+  handleChange: (event: SelectChangeEvent<string>) => void
+  inputValue: string | number
   label: string
+  name: string
 }
 
 export default function CustomSelect({
   options,
   handleChange,
   inputValue,
-  label
+  label,
+  name
 }: Props) {
   return (
     <FormControl sx={{ minWidth: '150px' }} size="small">
       <InputLabel>{label}</InputLabel>
       <Select
         onChange={handleChange}
-        value={inputValue}
+        displayEmpty
+        value={`${inputValue}`}
         size="small"
+        name={name}
         label={label}
         autoWidth
       >
+        <MenuItem sx={{ display: 'none' }} value=""></MenuItem>
         {options.map(({ value, name }) => (
           <MenuItem key={value} value={value}>
             {name}

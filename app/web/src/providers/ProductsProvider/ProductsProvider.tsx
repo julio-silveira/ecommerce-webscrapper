@@ -3,7 +3,7 @@ import React, { ReactNode, useMemo, useState } from 'react'
 import { AxiosError, AxiosResponse } from 'axios'
 import api from '../../services/api'
 import { ProductContext } from '../../contexts'
-import { Product } from '../../types'
+import { Product, SearchFormType } from '../../types'
 
 interface FetchProvider {
   children: ReactNode
@@ -28,10 +28,12 @@ export default function FetchProvider({ children }: FetchProvider) {
     }
   }
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (form: SearchFormType) => {
+    const url = `/products?category=${form.category}&source=${form.source}&query=${form.query}`
+
     const {
       data: { products }
-    } = (await apiGetRequest('/products')) as AxiosResponse
+    } = (await apiGetRequest(url)) as AxiosResponse
     setProducts(products)
   }
 

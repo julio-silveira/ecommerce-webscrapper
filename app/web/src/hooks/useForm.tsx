@@ -6,17 +6,19 @@ function useForm<T>(formInitialState: T) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
-
     setForm({ ...form, [name]: value })
   }
 
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
     const { name, value } = event.target
-
     setForm({ ...form, [name]: value })
   }
 
-  return { form, setForm, handleChange, handleSelectChange }
+  const clearForm = () => {
+    setForm(formInitialState)
+  }
+
+  return { form, setForm, handleChange, handleSelectChange, clearForm }
 }
 
 export default useForm
