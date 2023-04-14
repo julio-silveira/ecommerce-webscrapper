@@ -1,9 +1,9 @@
 import { createContext } from 'react'
-import { Product, SearchFormType } from '../../types'
+import { Product } from '../../types'
 
 export type ProductContextData = {
   products: Product[]
-  fetchProducts: (form: SearchFormType) => Promise<void>
+  fetchProducts: (url: string) => Promise<void>
   loading: boolean
 }
 

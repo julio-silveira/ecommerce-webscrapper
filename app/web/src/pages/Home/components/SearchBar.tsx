@@ -4,6 +4,7 @@ import useForm from '../../../hooks/useForm'
 import CustomSelect from '../../../components/CustomSelect/CustomSelect'
 import { ProductContext } from '../../../contexts'
 import { SearchFormType } from '../../../types'
+import buildProductsUrl from '../../../utils/buildProductsUrl'
 
 const searchEngines = [
   { value: 'all', name: 'Todas' },
@@ -30,8 +31,8 @@ export default function SearchBar() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-
-    await fetchProducts(form)
+    const url = buildProductsUrl(form)
+    await fetchProducts(url)
 
     clearForm()
   }
