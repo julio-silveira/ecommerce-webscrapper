@@ -12,6 +12,7 @@ mongoose.connect(MONGO_URL).then(() => {
     })
 }
 ).catch(()=> {
+    console.log(PORT,MONGO_URL)
     console.error('error on server starting or database connection');
     process.exit(0);
 })

@@ -1,5 +1,5 @@
 import React, { FormEvent, useContext } from 'react'
-import { Button, Stack, TextField } from '@mui/material'
+import { Button, Stack, TextField, useTheme } from '@mui/material'
 import useForm from '../../../hooks/useForm'
 import CustomSelect from '../../../components/CustomSelect/CustomSelect'
 import { ProductContext } from '../../../contexts'
@@ -25,6 +25,7 @@ const defaultValues: SearchFormType = {
 }
 
 export default function SearchBar() {
+  const theme = useTheme()
   const { form, handleChange, handleSelectChange, clearForm } =
     useForm<SearchFormType>(defaultValues)
   const { fetchProducts } = useContext(ProductContext)
@@ -40,7 +41,6 @@ export default function SearchBar() {
   return (
     <Stack
       component="form"
-      pt={4}
       spacing={1}
       direction={{ xs: 'column', md: 'row' }}
       justifyContent="center"
@@ -68,11 +68,24 @@ export default function SearchBar() {
         size="small"
         label="Busca"
       />
-      <Button type="submit" size="small" variant="contained">
+      <Button
+        sx={{ width: { xs: '100%', md: '80px' } }}
+        type="submit"
+        size="small"
+        variant="contained"
+      >
         Search
       </Button>
-      <Button color="secondary" size="small" onClick={clearForm}>
-        Clear
+      <Button
+        sx={{
+          border: `solid 1px ${theme.palette.secondary.main}`,
+          width: { xs: '100%', md: '80px' }
+        }}
+        color="secondary"
+        size="small"
+        onClick={clearForm}
+      >
+        CLEAR
       </Button>
     </Stack>
   )

@@ -1,5 +1,13 @@
 import React from 'react'
-import { Box, Button, Grid, Paper, Stack, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+  useTheme
+} from '@mui/material'
 import { Product } from '../../../types'
 import { Link } from 'react-router-dom'
 type Props = {
@@ -9,15 +17,19 @@ type Props = {
 export default function ProductCard({
   product: { image, title, url, price, originWebsite }
 }: Props) {
+  const theme = useTheme()
   if (!image) return null
   return (
     <Grid
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        '&:hover': {
+          border: `solid 1px ${theme.palette.primary.main}`
+        }
       }}
-      p={2}
+      p={3}
       item
       md={8}
       xs={12}
@@ -37,10 +49,10 @@ export default function ProductCard({
         <Box
           component="img"
           src={image}
-          sx={{ maxWidth: '128px', maxHeight: '128px' }}
+          sx={{ objectFit: 'contain', overflow: 'hidden' }}
         />
       </Paper>
-      <Stack sx={{ width: '45%' }} ml={2}>
+      <Stack sx={{ width: '45%' }}>
         <Typography>{title}</Typography>
         <Typography>
           {price.toLocaleString('pt-BR', {
@@ -50,13 +62,13 @@ export default function ProductCard({
         </Typography>
         <Typography>{originWebsite}</Typography>
       </Stack>
-      <Stack sx={{ width: '25%' }}>
+      <Stack alignItems="center" sx={{ width: '15%' }}>
         <Button
+          size="small"
           component={Link}
           to={url}
           target="_blank"
           rel="noopener noreferrer"
-          sx={{ ml: 2 }}
           variant="contained"
         >
           Ir a Web

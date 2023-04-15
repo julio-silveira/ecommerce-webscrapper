@@ -1,5 +1,6 @@
-import { Box, Stack, Typography } from '@mui/material'
 import React from 'react'
+import { Box, Stack, Typography } from '@mui/material'
+import lexWhite from '../../assets/lex-white.svg'
 
 export default function Header() {
   return (
@@ -8,14 +9,14 @@ export default function Header() {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      px={2}
+      p={2}
     >
       <Box
         component="img"
-        sx={{ width: { xs: '100px', md: '300px' } }}
-        src="https://dev-lexart-corp-site.pantheonsite.io/wp-content/uploads/2022/12/lex-white.svg"
+        sx={{ width: { xs: '150px', md: '300px' } }}
+        src={lexWhite}
       />
-      <Typography variant="h5">Search Engine</Typography>
+      <Typography typography={{ xs: 'h6', md: 'h4' }}>Search Engine</Typography>
     </Stack>
   )
 }
