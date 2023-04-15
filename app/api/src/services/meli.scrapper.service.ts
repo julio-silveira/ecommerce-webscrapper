@@ -37,7 +37,7 @@ export class MeliScrapperService {
 
       const numberfiedPrice = Number(price.split('R$').at(-1)?.replace('.','').replace(',','.'))
 
-      itens.push({ image,title,category,url,price: numberfiedPrice, originWebsite:this.originWebsite})
+      itens.push({ index: i ,image,title,category,url,price: numberfiedPrice, originWebsite:this.originWebsite})
     })
 
     return itens
