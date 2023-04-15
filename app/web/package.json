@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "start:prod": "npx http-server --proxy http://localhost:$PORT? ./dist",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
