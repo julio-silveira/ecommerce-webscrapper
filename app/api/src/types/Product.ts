@@ -1,4 +1,5 @@
 export interface Product  {
+  index?: number
   image: string,
   title: string,
   category: string,

@@ -21,25 +21,29 @@ export class ProductService{
     const buscapeProductsList = await this.buscapeScrapper.getProductList(category, query)
 
     const unifiedList = [...meliProductsList, ...buscapeProductsList]
-     .sort((a,b) => a.price - b.price)
+     .sort((a,b) => a.index - b.index)
     return unifiedList
   }
 
   private async filterSources(productsList: ProductList, source: string | undefined){
     const {category, query, products} = productsList
     const parsedSource = sources[source]
+
     if(!source || !parsedSource) return productsList
-    return {category, query, products: products.filter(({originWebsite})=> originWebsite === parsedSource)}
+
+    const filteedProducts =  products.filter(({originWebsite})=> originWebsite === parsedSource)
+    return {category, query, products: filteedProducts }
   }
 
   public async findProducts(category: ProductCategory, query: string, source: string) {
-    let productList = await ProductsListModel.findOne({category, query})
+    const parsedQuery = query.trim().toLowerCase()
+    let productList = await ProductsListModel.findOne({category, query: parsedQuery})
 
     if(!productList) {
       const scrappedProducts = await this.getScrappedProducts(category, query)
-      await ProductsListModel.create({category, query,products: scrappedProducts})
+      await ProductsListModel.create({category, query: parsedQuery,products: scrappedProducts})
 
-      productList = await ProductsListModel.findOne({category, query})
+      productList = await ProductsListModel.findOne({category, query: parsedQuery})
     }
 
     const filterdList = this.filterSources(productList, source)

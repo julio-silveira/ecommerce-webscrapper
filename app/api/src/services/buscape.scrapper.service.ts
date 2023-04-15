@@ -50,7 +50,7 @@ export class BuscapeScrapperService {
         .find((e)=> e.startsWith("src") )?.split("\"").at(1)
 
     }
-      itens.push({image,title,category,url: `https://www.buscape.com.br${url}`,price: numberfiedPrice, originWebsite:this.originWebsite})
+      itens.push({index: i,image,title,category,url: `https://www.buscape.com.br${url}`,price: numberfiedPrice, originWebsite:this.originWebsite})
     }})
 
     return itens
