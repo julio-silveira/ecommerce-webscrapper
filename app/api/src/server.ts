@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 const PORT = process.env.PORT || 3000;
 
-const MONGO_URL = process.env.MONGO_URL || 'mongodb://localhost:27017/lexart'
+const MONGO_URL = process.env.MONGO_URI || 'mongodb://localhost:27017/lexart'
 
 mongoose.connect(MONGO_URL).then(() => {
     app.listen(PORT, () => {
