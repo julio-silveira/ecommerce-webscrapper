@@ -31,12 +31,12 @@ export class ProductService{
 
     if(!source || !parsedSource) return productsList
 
-    const filteedProducts =  products.filter(({originWebsite})=> originWebsite === parsedSource)
-    return {category, query, products: filteedProducts }
+    const filteredProducts =  products.filter(({originWebsite}) => originWebsite === parsedSource)
+    return {category, query, products: filteredProducts }
   }
 
   public async findProducts(category: ProductCategory, query: string, source: string) {
-    const parsedQuery = query.trim().toLowerCase()
+    const parsedQuery = query?.trim()?.toLowerCase()
     let productList = await ProductsListModel.findOne({category, query: parsedQuery})
 
     if(!productList) {

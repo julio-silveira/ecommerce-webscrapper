@@ -31,7 +31,7 @@ export default function ProductCard({
       }}
       p={3}
       item
-      md={8}
+      md={6}
       xs={12}
       elevation={10}
       component={Paper}
@@ -42,29 +42,33 @@ export default function ProductCard({
           display: 'flex',
           justifyContent: 'center',
           bgcolor: '#FFF',
-          borderRadius: '10px'
+          borderRadius: '10px',
+          minHeight: { xs: '150px', md: '200px' }
         }}
         elevation={2}
       >
         <Box
           component="img"
           src={image}
-          sx={{ objectFit: 'contain', overflow: 'hidden' }}
+          sx={{ objectFit: 'contain', overflow: 'hidden', maxHeight: '200px' }}
         />
       </Paper>
-      <Stack sx={{ width: '45%' }}>
-        <Typography>{title}</Typography>
-        <Typography>
-          {price.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-          })}
-        </Typography>
-        <Typography>{originWebsite}</Typography>
-      </Stack>
-      <Stack alignItems="center" sx={{ width: '15%' }}>
+      <Stack
+        direction={{ xs: 'column', md: 'row' }}
+        alignItems={'center'}
+        sx={{ width: '65%' }}
+      >
+        <Stack sx={{ width: { xs: '100%', md: '70%' } }}>
+          <Typography variant="body1">{title}</Typography>
+          <Typography variant="h6">
+            {price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            })}
+          </Typography>
+          <Typography>{originWebsite}</Typography>
+        </Stack>
         <Button
-          size="small"
           component={Link}
           to={url}
           target="_blank"
