@@ -55,7 +55,7 @@ cd app/web
 npm run dev
 ```
 
-##Uso
+## Uso
 
 Abra o seu navegador da web e vá para http://localhost:5173.
 Escolha uma categoria e um site usando os menus suspensos.
