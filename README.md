@@ -34,7 +34,7 @@ Para executar este aplicativo, você precisará:
 - Clone o repositório:
 
 ```
-git clone git@github.com:julio-silveira/lexarts-challenge-app.git
+git clone git@github.com:julio-silveira/lexart-challenge-app.git
 ```
 - Instale as bibliotecas necessárias:
 
@@ -51,7 +51,7 @@ npm run dev
 ```
 -Abra um novo terminal e execute: 
 ```
-cd ../web
+cd app/web
 npm run dev
 ```
 
