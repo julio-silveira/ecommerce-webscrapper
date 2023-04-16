@@ -5,7 +5,6 @@ import cors from 'cors'
 import productRoutes from './routes/products.router'
 import errorMiddleware from './middlewares/error.middleware';
 
-
 config();
 
 const app = express();
