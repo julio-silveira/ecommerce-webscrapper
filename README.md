@@ -27,8 +27,9 @@ Acessar aplicação em produção: https://lexart.up.railway.app/
 ## Requisitos
 Para executar este aplicativo, você precisará:
 
-Node.js
-npm 
+- Node.js
+- npm 
+
 ## Instalação
 - Clone o repositório:
 
