@@ -34,8 +34,6 @@ export default function SearchBar() {
     event.preventDefault()
     const url = buildProductsUrl(form)
     await fetchProducts(url)
-
-    clearForm()
   }
 
   return (
