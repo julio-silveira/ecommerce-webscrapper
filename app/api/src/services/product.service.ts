@@ -41,6 +41,7 @@ export class ProductService{
 
     if(!productList) {
       const scrappedProducts = await this.getScrappedProducts(category, query)
+
       await ProductsListModel.create({category, query: parsedQuery,products: scrappedProducts})
 
       productList = await ProductsListModel.findOne({category, query: parsedQuery})

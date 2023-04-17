@@ -18,14 +18,12 @@ export default function FetchProvider({ children }: FetchProvider) {
 
   const fetchProducts = async (url: string) => {
     try {
-      console.log(url)
       setLoading(true)
       const {
         data: { products }
       } = await api.get(url)
       setProducts(products)
     } catch (err) {
-      // const e = err as AxiosError
       setProducts([])
       setEmptyMessage(emptySeartchMessage)
     } finally {

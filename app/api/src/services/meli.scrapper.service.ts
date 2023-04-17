@@ -5,7 +5,7 @@ import { ProductCategory } from '../types/ProductCategory'
 import { Product } from '../types/Product'
 
 export class MeliScrapperService {
-  private mainSelector = '.ui-search-layout.ui-search-layout--stack.shops__layout'
+  private mainSelector = '.ui-search-layout__item'
   private imageSelector = '.carousel-container'
   private titleSelector = '.ui-search-item__title'
   private urlSelector = '.ui-search-link'
@@ -14,7 +14,7 @@ export class MeliScrapperService {
 
   private buildUrl(category: ProductCategory, query: string) {
     const categoryQuery = meliCategories[category]
-    const defaultQueryCategory = query? query : defaultQuery(category)
+    const defaultQueryCategory = query? query : defaultQuery[category]
     const nameQuery = `${defaultQueryCategory}_NoIndex_True#D[A:${defaultQueryCategory},on]`
 
     return `https://lista.mercadolivre.com.br/${categoryQuery}/${nameQuery}`
@@ -22,13 +22,11 @@ export class MeliScrapperService {
 
   public async getProductList(category: ProductCategory, query: string): Promise<Product[]> {
     const url = this.buildUrl(category, query)
-
     const { data } = await axios.get(url)
     const $ =  cheerio.load(data)
 
     const itens: Product[] = []
-
-    $(this.mainSelector).children().each((i, element) => {
+    $(this.mainSelector).each((i, element) => {
       const el = $(element)
       const image = el.find(this.imageSelector).find('img').attr('data-src')
       const title = el.find(this.titleSelector).text()
@@ -44,3 +42,5 @@ export class MeliScrapperService {
   }
 
 }
+
+

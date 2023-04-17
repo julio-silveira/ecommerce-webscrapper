@@ -13,14 +13,14 @@ export class BuscapeScrapperService {
   private originWebsite = sources.busca
 
   private buildUrl(category: ProductCategory, query: string) {
-    const nameQuery = query ? query : defaultQuery(category)
-    return `https://www.buscape.com.br/search?q=${nameQuery}`
+    const nameQuery = query ? query : defaultQuery[category]
+    const categoryQuery = defaultQuery[category]
+    return `https://www.buscape.com.br/${categoryQuery}?q=${nameQuery}`
   }
 
   public async getProductList(category: ProductCategory, query: string): Promise<Product[]>{
     const url = this.buildUrl(category, query)
-
-    const { data } = await axios.get(url, {responseType: 'arraybuffer'})
+    const { data } = await axios.get(url)
     const $ =  cheerio.load(data)
 
     const itens: Product[] = []
