@@ -1,4 +1,4 @@
-# Lexarts challenge - Search Engine
+# Ecommerce - Search Engine
 
 ## Visão geral
 
@@ -11,8 +11,6 @@ Este é um projeto de um mecanismo de busca de produtos que se conecta às pági
 - Lista de produtos com: foto, descrição, categoria, preço e site onde as informações foram obtidas.
 - Armazena os resultados em um banco de dados após a pesquisa do usuário. Se a mesma pesquisa for repetida (considerando apenas os filtros de categoria e web para armazenar), mostra o que sai da base e não desfaz para as webs.
 - Solução hospedada online em um servidor gratuito como o Heroku ou alguma outra alternativa.
-
-Acessar aplicação em produção: https://lexart.up.railway.app/
 
 ## Tecnologias Utilizadas
 - Typescript
@@ -34,7 +32,7 @@ Para executar este aplicativo, você precisará:
 - Clone o repositório:
 
 ```
-git clone git@github.com:julio-silveira/lexart-challenge-app.git
+git clone git@github.com:julio-silveira/ecommerce-webscrapper.git
 ```
 - Instale as bibliotecas necessárias:
 
